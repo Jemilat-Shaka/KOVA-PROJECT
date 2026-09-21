@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KOVA — Your Cart</title>
+
+    <!-- Main KOVA styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Cart page styles -->
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         KOVA HEADER
+    ========================== -->
+
+    <header class="kova-header">
+
+        <!-- DESKTOP HEADER -->
+
+        <div class="kova-header__desktop">
+
+            <a
+                href="index.html"
+                class="kova-logo"
+                aria-label="KOVA home"
+            >
+                <span class="kova-text-logo">KOVA</span>
+            </a>
+
+
+            <nav
+                class="kova-nav"
+                aria-label="Main navigation"
+            >
+
+                <a
+                    href="products.html"
+                    class="kova-nav__link kova-nav__link--active"
+                >
+                    Shop
+                </a>
+
+                <a
+                    href="#"
+                    class="kova-nav__link"
+                >
+                    Categories
+                </a>
+
+                <a
+                    href="#"
+                    class="kova-nav__link"
+                >
+                    Deals
+                </a>
+
+                <a
+                    href="#"
+                    class="kova-nav__link"
+                >
+                    New in
+                </a>
+
+            </nav>
+
+
+            <!-- SEARCH -->
+
+            <form
+                class="kova-search"
+                role="search"
+                onsubmit="return false;"
+            >
+
+                <span
+                    class="kova-search-symbol"
+                    aria-hidden="true"
+                >
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    placeholder="Search 194 products"
+                    aria-label="Search products"
+                >
+
+            </form>
+
+
+            <!-- ACCOUNT -->
+
+            <a
+                href="#"
+                class="kova-header__icon-button kova-account-icon"
+                aria-label="Account"
+            >
+                <span
+                    class="kova-user-symbol"
+                    aria-hidden="true"
+                >
+                    <span class="kova-user-head"></span>
+                    <span class="kova-user-body"></span>
+                </span>
+            </a>
+
+
+            <!-- CART -->
+
+            <a
+                href="cart.html"
+                class="kova-header__icon-button kova-cart-button"
+                aria-label="Cart"
+            >
+
+                <span
+                    class="kova-cart-symbol"
+                    aria-hidden="true"
+                >
+                    <span class="kova-cart-handle"></span>
+                    <span class="kova-cart-basket"></span>
+                    <span class="kova-cart-wheel kova-cart-wheel-left"></span>
+                    <span class="kova-cart-wheel kova-cart-wheel-right"></span>
+                </span>
+
+                <span
+                    id="kovaHeaderCartBadge"
+                    class="kova-cart-badge"
+                >
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE HEADER -->
+
+        <div class="kova-header__mobile">
+
+            <button
+                type="button"
+                class="kova-mobile-back"
+                aria-label="Go back"
+                onclick="history.back()"
+            >
+                <span aria-hidden="true">‹</span>
+            </button>
+
+
+            <h1 class="kova-mobile-title">
+                Your cart
+            </h1>
+
+
+            <div class="kova-mobile-spacer"></div>
+
+
+            <button
+                type="button"
+                class="kova-mobile-icon"
+                aria-label="Search"
+            >
+
+                <span
+                    class="kova-search-symbol"
+                    aria-hidden="true"
+                >
+                    ⌕
+                </span>
+
+            </button>
+
+
+            <a
+                href="cart.html"
+                class="kova-mobile-icon kova-mobile-cart"
+                aria-label="Cart"
+            >
+
+                <span
+                    class="kova-cart-symbol"
+                    aria-hidden="true"
+                >
+                    <span class="kova-cart-handle"></span>
+                    <span class="kova-cart-basket"></span>
+                    <span class="kova-cart-wheel kova-cart-wheel-left"></span>
+                    <span class="kova-cart-wheel kova-cart-wheel-right"></span>
+                </span>
+
+                <span
+                    id="kovaMobileCartBadge"
+                    class="kova-cart-badge kova-cart-badge--mobile"
+                >
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CART PAGE
+    ========================== -->
+
+    <main
+        id="cart-root"
+        class="kova-cart-page"
+    >
+
+        <div class="kova-cart-container">
+
+            <!-- BREADCRUMB -->
+
+            <div class="kova-breadcrumb">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <span>/</span>
+
+                <span>
+                    Cart
+                </span>
+
+            </div>
+
+
+            <!-- CART HEADING -->
+
+            <div class="kova-cart-heading">
+
+                <div>
+
+                    <p class="kova-eyebrow">
+                        CART
+                    </p>
+
+                    <h1>
+                        Your cart
+                    </h1>
+
+                    <p
+                        id="cartCount"
+                        class="kova-cart-count"
+                    >
+                        0 products · 0 items
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="clearCartTop"
+                    class="kova-clear-link"
+                >
+                    Clear cart
+                </button>
+
+            </div>
+
+
+            <!-- CART CONTENT -->
+
+            <div class="kova-cart-layout">
+
+                <!-- CART ITEMS -->
+
+                <section class="kova-cart-items">
+
+                    <div id="cartItems">
+                        <!-- JavaScript will place cart products here -->
+                    </div>
+
+
+                    <!-- BOTTOM ACTIONS -->
+
+                    <div
+                        id="cartActions"
+                        class="kova-cart-bottom-actions"
+                    >
+
+                        <a
+                            href="products.html"
+                            class="kova-button kova-button-secondary"
+                        >
+                            ← Continue shopping
+                        </a>
+
+                        <button
+                            type="button"
+                            id="clearCartBottom"
+                            class="kova-button kova-button-ghost"
+                        >
+                            Clear cart
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CART SUMMARY -->
+
+                <aside class="kova-cart-summary">
+
+                    <h2>
+                        Summary
+                    </h2>
+
+
+                    <div class="kova-summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <span id="cartSubtotal">
+                            $0.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="kova-summary-row">
+
+                        <span>
+                            Product discounts
+                        </span>
+
+                        <span id="cartDiscount">
+                            −$0.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="kova-summary-row">
+
+                        <span>
+                            Shipping
+                        </span>
+
+                        <span>
+                            Free
+                        </span>
+
+                    </div>
+
+
+                    <div class="kova-summary-divider"></div>
+
+
+                    <div class="kova-summary-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="finalTotal">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="checkoutButton"
+                        class="kova-checkout-button"
+                    >
+                        Checkout
+                    </button>
+
+
+                    <p class="kova-summary-note">
+                        Taxes and shipping are calculated at checkout.
+                    </p>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         KOVA DARK FOOTER
+    ========================== -->
+
+    <footer class="kova-footer">
+
+        <div class="kova-footer__container">
+
+            <div class="kova-footer__grid">
+
+                <!-- BRAND -->
+
+                <div class="kova-footer__brand">
+
+                    <a
+                        href="index.html"
+                        class="kova-footer__logo"
+                        aria-label="KOVA home"
+                    >
+                        <span class="kova-text-logo">KOVA</span>
+                    </a>
+
+
+                    <p class="kova-footer__description">
+                        194 products across 24 categories. Every
+                        price, rating and stock level comes straight
+                        from the API.
+                    </p>
+
+                </div>
+
+
+                <!-- SHOP -->
+
+                <div class="kova-footer__column">
+
+                    <h3>
+                        Shop
+                    </h3>
+
+                    <a href="products.html">
+                        All products
+                    </a>
+
+                    <a href="#">
+                        Categories
+                    </a>
+
+                    <a href="#">
+                        Deals
+                    </a>
+
+                    <a href="#">
+                        New in
+                    </a>
+
+                </div>
+
+
+                <!-- ACCOUNT -->
+
+                <div class="kova-footer__column">
+
+                    <h3>
+                        Account
+                    </h3>
+
+                    <a href="#">
+                        Sign in
+                    </a>
+
+                    <a href="cart.html">
+                        My cart
+                    </a>
+
+                    <a href="#">
+                        Order history
+                    </a>
+
+                    <a href="#">
+                        Wishlist
+                    </a>
+
+                </div>
+
+
+                <!-- HELP -->
+
+                <div class="kova-footer__column">
+
+                    <h3>
+                        Help
+                    </h3>
+
+                    <a href="#">
+                        Shipping
+                    </a>
+
+                    <a href="#">
+                        Returns
+                    </a>
+
+                    <a href="#">
+                        Warranty
+                    </a>
+
+                    <a href="#">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="kova-footer__bottom">
+
+                <p>
+                    Kova — a teaching storefront
+                </p>
+
+                <p>
+                    Data: dummyjson.com
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- KOVA JAVASCRIPT -->
+
+    <script src="js/script.js"></script>
+
+
+    <!-- HEADER BADGE ADAPTER -->
+
+    <script>
+
+        (function () {
+
+            function updateHeaderCartBadge() {
+
+                const cartCountElement =
+                    document.getElementById("cartCount");
+
+                const desktopBadge =
+                    document.getElementById("kovaHeaderCartBadge");
+
+                const mobileBadge =
+                    document.getElementById("kovaMobileCartBadge");
+
+
+                if (!cartCountElement) {
+                    return;
+                }
+
+
+                const text =
+                    cartCountElement.textContent || "";
+
+
+                const match =
+                    text.match(
+                        /[·•]\s*([\d,]+)\s*items?/i
+                    );
+
+
+                let quantity = 0;
+
+
+                if (match) {
+
+                    quantity =
+                        parseInt(
+                            match[1].replace(/,/g, ""),
+                            10
+                        ) || 0;
+
+                }
+
+
+                [desktopBadge, mobileBadge]
+                    .forEach(function (badge) {
+
+                        if (!badge) {
+                            return;
+                        }
+
+
+                        badge.textContent =
+                            quantity;
+
+
+                        if (quantity <= 0) {
+
+                            badge.classList.add(
+                                "is-hidden"
+                            );
+
+                        } else {
+
+                            badge.classList.remove(
+                                "is-hidden"
+                            );
+
+                        }
+
+                    });
+
+            }
+
+
+            updateHeaderCartBadge();
+
+
+            const cartCountElement =
+                document.getElementById("cartCount");
+
+
+            if (cartCountElement) {
+
+                const observer =
+                    new MutationObserver(
+                        updateHeaderCartBadge
+                    );
+
+
+                observer.observe(
+                    cartCountElement,
+                    {
+                        childList: true,
+                        characterData: true,
+                        subtree: true
+                    }
+                );
+
+            }
+
+        })();
+
+    </script>
+
+</body>
+
+</html>

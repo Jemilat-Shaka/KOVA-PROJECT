@@ -1,0 +1,1053 @@
+/* ============================================================
+   KOVA CART PAGE
+   COMPLETE CSS
+============================================================ */
+* {
+    box-sizing: border-box;
+}
+/* ============================================================
+   KOVA COLORS
+============================================================ */
+:root {
+    --kova-ink: #101418;
+    --kova-ink-70: #4a525c;
+    --kova-ink-45: #7c858f;
+    --kova-line: #e2e5e9;
+    --kova-line-soft: #eff1f3;
+    --kova-paper: #ffffff;
+    --kova-canvas: #f5f6f7;
+    --kova-signal: #ffd400;
+    --kova-signal-deep: #e5be00;
+    --kova-stock-in: #128a5b;
+    --kova-stock-low: #b84a08;
+    --kova-stock-out: #a3121c;
+}
+/* ============================================================
+   KOVA HEADER
+============================================================ */
+.kova-header {
+    width: 100%;
+    height: 76px;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e5e9;
+    position: relative;
+    z-index: 1000;
+}
+.kova-header__desktop {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+/* ============================================================
+   KOVA LOGO
+============================================================ */
+.kova-logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    text-decoration: none;
+}
+.kova-text-logo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    color: #111111;
+    padding-left: 25px;
+}
+/* Yellow KOVA mark */
+.kova-text-logo::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 19px;
+    height: 19px;
+    transform: translateY(-50%);
+    background: #f7c900;
+    clip-path: polygon(
+        25% 0,
+        100% 0,
+        100% 100%,
+        25% 100%,
+        0 50%
+    );
+}
+/* Footer version */
+.kova-footer__logo .kova-text-logo {
+    color: #ffffff;
+}
+/* ============================================================
+   HEADER NAVIGATION
+============================================================ */
+.kova-header nav {
+    margin: 0;
+    padding: 0;
+}
+.kova-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 0 0 auto;
+}
+.kova-nav__link {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    color: #101418;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.kova-nav__link:hover {
+    color: #101418;
+}
+.kova-nav__link--active {
+    font-weight: 600;
+}
+.kova-nav__link--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 21px;
+    height: 2px;
+    background: #ffd400;
+}
+/* ============================================================
+   HEADER SEARCH
+============================================================ */
+.kova-search {
+    height: 44px;
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    margin: 0;
+    background: #f5f6f7;
+    border: 1px solid #e2e5e9;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.kova-search-symbol {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #101418;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+    transform: rotate(-20deg);
+}
+.kova-search input {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #101418;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+.kova-search input::placeholder {
+    color: #7c858f;
+    opacity: 1;
+}
+.kova-search:focus-within {
+    border-color: #101418;
+    box-shadow:
+        0 0 0 3px rgba(16, 20, 24, 0.10);
+}
+/* ============================================================
+   HEADER ACCOUNT + CART
+============================================================ */
+.kova-header__icon-button {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #101418;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* ============================================================
+   PROFILE ICON
+============================================================ */
+.kova-user-symbol {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+.kova-user-head {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 50%;
+    top: 1px;
+    transform: translateX(-50%);
+    border: 2px solid #101418;
+    border-radius: 50%;
+}
+.kova-user-body {
+    position: absolute;
+    width: 16px;
+    height: 9px;
+    left: 50%;
+    bottom: 1px;
+    transform: translateX(-50%);
+    border: 2px solid #101418;
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+/* ============================================================
+   CART ICON
+============================================================ */
+.kova-cart-symbol {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+/* Cart handle */
+.kova-cart-handle {
+    position: absolute;
+    left: 1px;
+    top: 3px;
+    width: 6px;
+    height: 2px;
+    background: #101418;
+    border-radius: 2px;
+    transform: rotate(12deg);
+}
+/* Cart basket */
+.kova-cart-basket {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 16px;
+    height: 10px;
+    border: 2px solid #101418;
+    border-top: 0;
+    transform: skewX(-10deg);
+}
+/* Cart wheels */
+.kova-cart-wheel {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    bottom: 2px;
+    background: #101418;
+    border-radius: 50%;
+}
+.kova-cart-wheel-left {
+    left: 8px;
+}
+.kova-cart-wheel-right {
+    right: 2px;
+}
+/* ============================================================
+   CART BADGE
+============================================================ */
+.kova-cart-badge {
+    position: absolute;
+    top: -7px;
+    right: -8px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #101418;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+.kova-cart-badge.is-hidden {
+    display: none;
+}
+/* ============================================================
+   MOBILE HEADER
+============================================================ */
+.kova-header__mobile {
+    display: none;
+}
+.kova-mobile-back {
+    width: 32px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0;
+    background: transparent;
+    color: #101418;
+    cursor: pointer;
+}
+.kova-mobile-back span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+    transform: translateY(-2px);
+}
+.kova-mobile-title {
+    margin: 0;
+    color: #101418;
+    font-family: "Bricolage Grotesque", Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.024em;
+    white-space: nowrap;
+}
+.kova-mobile-spacer {
+    flex: 1 1 auto;
+}
+.kova-mobile-icon {
+    position: relative;
+    width: 36px;
+    height: 40px;
+    margin-left: 8px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: #101418;
+    text-decoration: none;
+    cursor: pointer;
+}
+.kova-mobile-icon .kova-search-symbol {
+    font-size: 25px;
+}
+.kova-mobile-icon .kova-cart-symbol {
+    width: 24px;
+    height: 24px;
+}
+.kova-cart-badge--mobile {
+    top: 0;
+    right: -1px;
+    min-width: 22px;
+    height: 22px;
+    font-size: 11px;
+    border-width: 2px;
+}
+/* ============================================================
+   CART PAGE
+============================================================ */
+.kova-cart-page {
+    background: var(--kova-canvas);
+    min-height: 70vh;
+    padding: 64px 32px 96px;
+}
+.kova-cart-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* ============================================================
+   BREADCRUMB
+============================================================ */
+.kova-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--kova-ink-45);
+}
+.kova-breadcrumb a {
+    color: var(--kova-ink);
+    text-decoration: none;
+}
+.kova-breadcrumb a:hover {
+    text-decoration: underline;
+}
+/* ============================================================
+   CART HEADING
+============================================================ */
+.kova-cart-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+.kova-eyebrow {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--kova-ink-45);
+}
+.kova-cart-heading h1 {
+    margin: 0;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--kova-ink);
+}
+.kova-cart-count {
+    margin: 12px 0 0;
+    color: var(--kova-ink-70);
+    font-size: 15px;
+}
+.kova-clear-link {
+    border: 0;
+    background: transparent;
+    color: var(--kova-ink-70);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 0;
+}
+.kova-clear-link:hover {
+    color: var(--kova-stock-out);
+}
+/* ============================================================
+   CART LAYOUT
+============================================================ */
+.kova-cart-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        360px;
+    gap: 40px;
+    align-items: start;
+}
+.kova-cart-items {
+    min-width: 0;
+}
+#cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+/* ============================================================
+   CART ITEM
+============================================================ */
+.kova-cart-item {
+    display: grid;
+    grid-template-columns:
+        112px
+        minmax(180px, 1fr)
+        auto
+        auto
+        44px;
+    gap: 24px;
+    align-items: center;
+    background: var(--kova-paper);
+    border: 1px solid var(--kova-line);
+    padding: 20px;
+    border-radius: 4px;
+}
+.kova-cart-thumbnail {
+    width: 112px;
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.kova-cart-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.kova-cart-info {
+    min-width: 0;
+}
+.kova-cart-category {
+    margin: 0 0 7px;
+    color: var(--kova-ink-45);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.kova-cart-title {
+    margin: 0;
+    color: var(--kova-ink);
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.3;
+}
+.kova-cart-price {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.kova-price-current {
+    color: var(--kova-ink);
+    font-size: 15px;
+    font-weight: 800;
+}
+.kova-price-old {
+    color: var(--kova-ink-45);
+    font-size: 13px;
+    text-decoration: line-through;
+}
+.kova-discount-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 7px;
+    background: #fff5c2;
+    color: #725f00;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 800;
+}
+/* ============================================================
+   STOCK
+============================================================ */
+.kova-stock {
+    margin-top: 9px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.kova-stock-in {
+    color: var(--kova-stock-in);
+}
+.kova-stock-low {
+    color: var(--kova-stock-low);
+}
+.kova-stock-out {
+    color: var(--kova-stock-out);
+}
+/* ============================================================
+   QUANTITY
+============================================================ */
+.kova-quantity-stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--kova-line);
+    background: var(--kova-paper);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.kova-quantity-stepper button {
+    width: 36px;
+    height: 38px;
+    border: 0;
+    background: transparent;
+    color: var(--kova-ink);
+    font-size: 18px;
+    cursor: pointer;
+}
+.kova-quantity-stepper button:hover {
+    background: var(--kova-canvas);
+}
+.kova-quantity-stepper button:disabled {
+    color: #c5c9cd;
+    cursor: not-allowed;
+}
+.kova-quantity-value {
+    min-width: 36px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--kova-ink);
+}
+/* ============================================================
+   LINE TOTAL
+============================================================ */
+.kova-line-total {
+    min-width: 90px;
+    text-align: right;
+    color: var(--kova-ink);
+    font-size: 15px;
+    font-weight: 800;
+}
+/* ============================================================
+   REMOVE BUTTON
+============================================================ */
+.kova-remove-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--kova-line);
+    background: var(--kova-paper);
+    border-radius: 4px;
+    color: var(--kova-ink-45);
+    cursor: pointer;
+    font-size: 16px;
+}
+.kova-remove-button:hover {
+    color: var(--kova-stock-out);
+    border-color: #e7b9bd;
+    background: #fff5f5;
+}
+/* ============================================================
+   CART BOTTOM ACTIONS
+============================================================ */
+.kova-cart-bottom-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+.kova-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+.kova-button-secondary {
+    background: var(--kova-paper);
+    border: 1px solid var(--kova-line);
+    color: var(--kova-ink);
+}
+.kova-button-secondary:hover {
+    background: var(--kova-canvas);
+}
+.kova-button-ghost {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--kova-ink-70);
+}
+.kova-button-ghost:hover {
+    color: var(--kova-stock-out);
+}
+/* ============================================================
+   CART SUMMARY
+============================================================ */
+.kova-cart-summary {
+    position: sticky;
+    top: 24px;
+    background: var(--kova-paper);
+    border: 1px solid var(--kova-line);
+    padding: 28px;
+    border-radius: 4px;
+}
+.kova-cart-summary h2 {
+    margin: 0 0 24px;
+    color: var(--kova-ink);
+    font-size: 20px;
+}
+.kova-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+    color: var(--kova-ink-70);
+    font-size: 14px;
+}
+.kova-summary-row span:last-child {
+    color: var(--kova-ink);
+    font-weight: 700;
+    text-align: right;
+}
+.kova-summary-divider {
+    height: 1px;
+    background: var(--kova-line);
+    margin: 20px 0;
+}
+.kova-summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+.kova-summary-total span {
+    color: var(--kova-ink);
+    font-size: 16px;
+    font-weight: 800;
+}
+.kova-summary-total strong {
+    color: var(--kova-ink);
+    font-size: 24px;
+}
+.kova-checkout-button {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 4px;
+    background: var(--kova-signal);
+    color: var(--kova-ink);
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.kova-checkout-button:hover {
+    background: var(--kova-signal-deep);
+}
+.kova-summary-note {
+    margin: 14px 0 0;
+    color: var(--kova-ink-45);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+/* ============================================================
+   EMPTY CART
+============================================================ */
+.kova-empty-cart {
+    background: var(--kova-paper);
+    border: 1px solid var(--kova-line);
+    padding: 72px 32px;
+    text-align: center;
+    border-radius: 4px;
+}
+.kova-empty-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    background: var(--kova-canvas);
+    border-radius: 50%;
+    font-size: 28px;
+}
+.kova-empty-cart h2 {
+    margin: 0 0 10px;
+    color: var(--kova-ink);
+    font-size: 28px;
+}
+.kova-empty-cart p {
+    max-width: 500px;
+    margin: 0 auto 26px;
+    color: var(--kova-ink-70);
+    line-height: 1.6;
+}
+.kova-empty-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+/* ============================================================
+   CART LOADING / ERROR
+============================================================ */
+.kova-cart-loading {
+    background: var(--kova-paper);
+    border: 1px solid var(--kova-line);
+    padding: 30px;
+    border-radius: 4px;
+    color: var(--kova-ink-70);
+    text-align: center;
+}
+.kova-cart-error {
+    background: #fff5f5;
+    border: 1px solid #e7b9bd;
+    color: var(--kova-stock-out);
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+/* ============================================================
+   UNDO TOAST
+============================================================ */
+.kova-undo-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--kova-ink);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 4px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+    font-size: 14px;
+}
+.kova-undo-toast button {
+    border: 0;
+    background: var(--kova-signal);
+    color: var(--kova-ink);
+    padding: 7px 12px;
+    border-radius: 3px;
+    font-weight: 800;
+    cursor: pointer;
+}
+/* ============================================================
+   KOVA DARK FOOTER
+============================================================ */
+.kova-footer {
+    width: 100%;
+    background: #101418;
+    color: #ffffff;
+}
+.kova-footer__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 32px 18px;
+}
+.kova-footer__grid {
+    display: grid;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
+    gap: 48px;
+    padding-bottom: 30px;
+}
+.kova-footer__brand {
+    max-width: 300px;
+}
+.kova-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 14px;
+    line-height: 0;
+    text-decoration: none;
+}
+.kova-footer__description {
+    margin: 0;
+    color: #aeb5bc;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.55;
+}
+/* ============================================================
+   FOOTER COLUMNS
+============================================================ */
+.kova-footer__column h3 {
+    margin: 0 0 14px;
+    color: #ffffff;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+.kova-footer__column a {
+    display: block;
+    margin-bottom: 9px;
+    color: #aeb5bc;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    text-decoration: none;
+}
+.kova-footer__column a:hover {
+    color: #ffffff;
+}
+/* ============================================================
+   FOOTER BOTTOM
+============================================================ */
+.kova-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #7c858f;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 10px;
+}
+.kova-footer__bottom p {
+    margin: 0;
+}
+/* ============================================================
+   FOCUS STATES
+============================================================ */
+.kova-header a:focus-visible,
+.kova-header button:focus-visible,
+.kova-header input:focus-visible,
+.kova-footer a:focus-visible {
+    outline: 2px solid #ffd400;
+    outline-offset: 2px;
+}
+/* ============================================================
+   TABLET
+============================================================ */
+@media (max-width: 900px) {
+    .kova-cart-layout {
+        grid-template-columns: 1fr;
+    }
+    .kova-cart-summary {
+        position: static;
+    }
+    .kova-cart-item {
+        grid-template-columns:
+            84px
+            minmax(0, 1fr)
+            44px;
+        gap: 16px;
+    }
+    .kova-cart-thumbnail {
+        width: 84px;
+        height: 84px;
+    }
+    .kova-quantity-stepper {
+        grid-column: 2;
+        justify-self: start;
+    }
+    .kova-line-total {
+        grid-column: 2;
+        text-align: left;
+    }
+    .kova-remove-button {
+        grid-column: 3;
+        grid-row: 1;
+    }
+}
+/* ============================================================
+   MOBILE
+============================================================ */
+@media (max-width: 767px) {
+    .kova-header {
+        height: 60px;
+    }
+    .kova-header__desktop {
+        display: none;
+    }
+    .kova-header__mobile {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        background: #ffffff;
+    }
+    .kova-footer__container {
+        padding: 42px 20px 18px;
+    }
+    .kova-footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 34px 28px;
+    }
+    .kova-footer__brand {
+        grid-column: 1 / -1;
+        max-width: none;
+    }
+    .kova-footer__bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+@media (max-width: 600px) {
+    .kova-cart-page {
+        padding: 40px 16px 64px;
+    }
+    .kova-cart-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 28px;
+    }
+    .kova-cart-heading h1 {
+        font-size: 38px;
+    }
+    .kova-cart-item {
+        padding: 14px;
+        grid-template-columns:
+            72px
+            minmax(0, 1fr)
+            40px;
+        gap: 12px;
+    }
+    .kova-cart-thumbnail {
+        width: 72px;
+        height: 72px;
+    }
+    .kova-cart-title {
+        font-size: 16px;
+    }
+    .kova-cart-summary {
+        padding: 22px;
+    }
+    .kova-cart-bottom-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .kova-button {
+        width: 100%;
+    }
+    .kova-empty-cart {
+        padding: 56px 20px;
+    }
+    .kova-undo-toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        justify-content: space-between;
+    }
+}
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+@media (max-width: 390px) {
+    .kova-header__mobile {
+        padding: 0 16px;
+    }
+    .kova-mobile-title {
+        font-size: 28px;
+    }
+    .kova-mobile-icon {
+        margin-left: 4px;
+    }
+    .kova-footer__grid {
+        grid-template-columns: 1fr;
+    }
+    .kova-footer__brand {
+        grid-column: auto;
+    }
+}
