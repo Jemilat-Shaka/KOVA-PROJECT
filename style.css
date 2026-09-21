@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.split-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+.left-side {
+    flex: 1;
+    background-color: #FFFFFF;
+    padding: 40px 96px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.brand-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.form-container {
+    max-width: 528px;
+    width: 100%;
+    margin: auto;
+}
+
+.form-container h1 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1A202C;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1A202C;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 14px;
+    border: 1px solid #E2E5E9;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #A0AEC0;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #1A202C;
+    user-select: none;
+}
+
+.forgot-link, .form-footer a {
+    color: #1A202C;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-link:hover, .form-footer a:hover {
+    text-decoration: underline;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #FFD400;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+.credentials-banner {
+    background-color: #F5F6F7;
+    border-left: 3px solid #FFD400;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #718096;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 32px;
+}
+
+.form-footer {
+    text-align: center;
+    font-size: 0.88rem;
+    color: #718096;
+}
+
+.error-msg {
+    color: #E53E3E;
+    font-size: 0.85rem;
+    margin-top: -12px;
+    margin-bottom: 12px;
+    display: none;
+}
+
+
+.right-side {
+    flex: 1;
+    background-color: #101418;
+    display: flex;
+    align-items: center;
+    padding: 60px 10% 60px 8%;
+}
+
+.perks-container {
+    max-width: 460px;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.badge {
+    background-color: #FFD400;
+    color: #000000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.perks-container h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.perks-subtitle {
+    color: #A0AEC0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.perk-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.perk-card {
+    border: 1px solid #232D3A;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.perk-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    text-align: center;
+}
+
+.perk-vector-image {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.perk-text h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.perk-text p {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+
+@media (max-width: 900px) {
+    .split-container {
+        flex-direction: column;
+    }
+    .right-side {
+        padding: 60px 40px;
+    }
+}
