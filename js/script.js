@@ -1,4 +1,124 @@
 // ================================
+// KOVA JAVASCRIPT
+// ================================
+
+
+// ================================
+// PRODUCT DETAILS
+// ================================
+
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+
+if (productId) {
+
+    fetch(`https://dummyjson.com/products/${productId}`)
+
+        .then(response => response.json())
+
+        .then(product => {
+
+            const image = document.querySelector(".large-product-image");
+            const category = document.querySelector(".category");
+            const name = document.querySelector(".product-info h1");
+            const price = document.querySelector(".product-price");
+            const description = document.querySelector(".product-description");
+
+            if (image) {
+                image.style.backgroundImage = `url("${product.thumbnail}")`;
+                image.style.backgroundSize = "contain";
+                image.style.backgroundPosition = "center";
+                image.style.backgroundRepeat = "no-repeat";
+            }
+
+            if (category) {
+                category.textContent = product.category;
+            }
+
+            if (name) {
+                name.textContent = product.title;
+            }
+
+            if (price) {
+                price.textContent = `$${product.price}`;
+            }
+
+            if (description) {
+                description.textContent = product.description;
+            }
+
+        })
+
+        .catch(error => {
+            console.log("Error loading product:", error);
+        });
+}
+
+
+// ================================
+// ADD TO CART
+// ================================
+
+const addToCartButton = document.querySelector("#addToCart");
+
+if (addToCartButton) {
+
+    addToCartButton.addEventListener("click", function () {
+
+        const productId =
+            new URLSearchParams(window.location.search).get("id");
+
+        if (!productId) {
+            alert("Product not found.");
+            return;
+        }
+
+        fetch(`https://dummyjson.com/products/${productId}`)
+
+            .then(response => response.json())
+
+            .then(product => {
+
+                let cart =
+                    JSON.parse(localStorage.getItem("kovaCart")) || [];
+
+                const quantityInput =
+                    document.querySelector("#quantity");
+
+                const quantity = quantityInput
+                    ? Number(quantityInput.value)
+                    : 1;
+
+                for (let i = 0; i < quantity; i++) {
+
+                    cart.push({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        thumbnail: product.thumbnail
+                    });
+
+                }
+
+                localStorage.setItem(
+                    "kovaCart",
+                    JSON.stringify(cart)
+                );
+
+                alert("Product added to cart! 🛒");
+
+            })
+
+            .catch(error => {
+                console.log("Error adding product:", error);
+            });
+
+    });
+
+}
+
+
+// ================================
 // KOVA CART SYSTEM
 // ================================
 
