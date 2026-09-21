@@ -1,155 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KOVA - Product Details</title>
-
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-    <!-- HEADER -->
-
-    <header>
-
-        <div class="logo">
-            KOVA
-        </div>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="#">Categories</a>
+    <link rel="stylesheet" href="product-details.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="shop.html"
+          ><img
+            src="./Kova-UI-Kit/02-assets/logo/kova-lockup.svg"
+            alt="KOVA Logo"
+            class="nav-logo"
+        /></a>
+        <nav class="nav-links">
+          <a href="shop.html" class="active">Shop</a>
+          <a href="category.html">Categories</a>
+          <a href="#">Deals</a>
+          <a href="#">New in</a>
         </nav>
+      </div>
 
-        <a href="cart.html" class="cart">
-            🛒 Cart
+      <div class="nav-search-container">
+        <img
+          src="search.svg"
+          alt="Search"
+          class="search-icon"
+        />
+        <input type="text" placeholder="Search 194 products" />
+      </div>
+
+      <div class="nav-right">
+        <img
+          src="user.svg"
+          alt="Account"
+          class="nav-icon"
+        />
+        <a href="cart.html" class="cart-link" aria-label="View cart">
+          <div class="cart-icon-wrapper">
+            <img
+              src="./Kova-UI-Kit/02-assets/icons/cart.svg"
+              alt="Cart"
+              class="nav-icon"
+            />
+            <span id="cartCountBadge" class="cart-badge">0</span>
+          </div>
         </a>
-
+      </div>
     </header>
 
+    <main class="product-container">
+      <div class="breadcrumb">
+        <a href="shop.html">Home</a> &gt;
+        <a href="category.html">Categories</a> &gt;
+        <span id="breadCat">Beauty</span> &gt;
+        <span id="breadTitle" class="current-crumb">Loading...</span>
+      </div>
 
-    <!-- PRODUCT DETAILS -->
+      <div class="product-summary-split">
+        <div class="product-media-left">
+          <div class="main-image-stage bg-pink-box" id="stageColorBg">
+            <span class="promo-badge" id="prodDetailsPromo"></span>
+            <img
+              id="mainProductView"
+              src="ph-beauty.jpg"
+              alt="Product Frame"
+            />
+          </div>
 
-    <main class="product-page">
-
-        <div class="breadcrumb">
-
-            <a href="index.html">Home</a>
-
-            /
-
-            <a href="products.html">Products</a>
-
-            / Product Details
-
+          <div class="thumbnail-list-row" id="thumbnailList"></div>
         </div>
+        <div class="product-details-right">
+          <span class="detail-category-tag" id="prodDetailsCategory"></span>
+          <h1 class="detail-main-title" id="prodDetailsTitle">
+            Essence Mascara Lash Princess
+          </h1>
 
+          <div class="detail-rating-row">
+            <span class="stars-gold">★★★★★</span>
+            <span class="rating-text-meta" id="prodDetailsRating">4.94</span>
+            <span class="review-count" id="prodDetailsReviews"></span>
+            <span class="sku-label" id="prodDetailsSku"></span>
+          </div>
 
-        <div class="product-details">
+          <div class="detail-price-row">
+            <span class="detail-current-price" id="prodDetailsPrice"
+              >$9.27</span
+            >
+            <span class="detail-old-price" id="prodDetailsOldPrice">$9.99</span>
+            <span class="save-badge" id="prodDetailsDiscount"></span>
+          </div>
 
-            <!-- PRODUCT IMAGE -->
+          <div class="stock-line" id="prodDetailsStock"></div>
 
-            <div class="product-details-image">
+          <p class="detail-description-para" id="prodDetailsDesc">
+            The Essence Mascara Lash Princess defines and separates lashes while
+            achieving a bold, dramatic volume look that lasts all day without
+            flaking or smudging.
+          </p>
 
-                <div class="large-product-image"></div>
+          <div class="minimum-order">Quantity</div>
 
-            </div>
-
-
-            <!-- PRODUCT INFORMATION -->
-
-            <div class="product-info">
-
-                <p class="category">
-                    Electronics
-                </p>
-
-
-                <h1>
-                    Product Name
-                </h1>
-
-
-                <p class="product-price">
-                    $0
-                </p>
-
-
-                <p class="product-description">
-                    Product description will appear here.
-                </p>
-
-
-                <!-- QUANTITY -->
-
-                <div class="quantity-box">
-
-                    <label for="quantity">
-                        Quantity:
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantity"
-                        value="1"
-                        min="1"
-                    >
-
-                </div>
-
-
-                <!-- ADD TO CART -->
-
-                <button id="addToCart" type="button">
-
-                    Add to Cart
-
+          <div class="purchase-configuration-block">
+            <div class="quantity-calculator-row">
+              <div class="qty-stepper-box">
+                <button class="step-btn" onclick="decreaseProductQty()">
+                  -
                 </button>
-
-
-                <br>
-                <br>
-
-
-                <a href="products.html">
-                    ← Back to Products
-                </a>
-
+                <span id="productQtyDisplay">24</span>
+                <button class="step-btn" onclick="increaseProductQty()">
+                  +
+                </button>
+              </div>
             </div>
 
-        </div>
+            <button
+              class="btn-add-to-cart-large"
+              type="button"
+              onclick="triggerLargeAddToCart()"
+            ></button>
+            <button
+              class="btn-wishlist-large"
+              type="button"
+              aria-label="Add to wishlist"
+            >
+              ♡
+            </button>
+            <button class="buy-now-button" type="button">Buy it now</button>
+          </div>
 
+          <div class="service-grid">
+            <div>
+              <img
+                src="truck.svg"
+                alt=""
+              /><strong id="prodDetailsShipping"></strong>
+            </div>
+            <div>
+              <img
+                src="shield.svg"
+                alt=""
+              /><strong id="prodDetailsWarranty"></strong>
+            </div>
+            <div>
+              <img
+                src="return.svg"
+                alt=""
+              /><strong id="prodDetailsReturns"></strong>
+            </div>
+          </div>
+
+          <section class="specifications">
+            <h2>Specifications</h2>
+            <p><span>Brand</span><strong id="prodDetailsBrand"></strong></p>
+            <p><span>Weight</span><strong id="prodDetailsWeight"></strong></p>
+            <p>
+              <span>Dimensions</span
+              ><strong id="prodDetailsDimensions"></strong>
+            </p>
+            <p><span>Barcode</span><strong id="prodDetailsBarcode"></strong></p>
+            <p><span>Tags</span><strong id="prodDetailsTags"></strong></p>
+          </section>
+        </div>
+      </div>
+      <section class="reviews-section">
+        <span
+          class="section-context-label"
+          id="prodDetailsReviewSummary"
+        ></span>
+        <h2>What buyers said</h2>
+        <div class="reviews-grid" id="prodDetailsReviewList"></div>
+      </section>
+      <section class="section-block recommendations-section">
+        <span class="section-context-label">SAME CATEGORY</span>
+        <div class="section-header recommendations-header">
+          <h2>You might also like</h2>
+        </div>
+        <div class="recommendations-row-grid">
+          <div class="suggested-card" data-product-index="0">
+            <div class="s-img-box bg-purple-box">
+              <img src="ph-beauty.jpg" alt="Recommended product" />
+            </div>
+            <div class="s-info-box">
+              <h5></h5>
+              <span class="s-price"></span>
+            </div>
+          </div>
+          <div class="suggested-card" data-product-index="1">
+            <div class="s-img-box bg-blue-box">
+              <img src="ph-beauty.jpg" alt="Recommended product" />
+            </div>
+            <div class="s-info-box">
+              <h5></h5>
+              <span class="s-price"></span>
+            </div>
+          </div>
+          <div class="suggested-card" data-product-index="2">
+            <div class="s-img-box bg-gold-box">
+              <img src="" alt="Recommended product" />
+            </div>
+            <div class="s-info-box">
+              <h5></h5>
+              <span class="s-price"></span>
+            </div>
+          </div>
+          <div class="suggested-card" data-product-index="3">
+            <div class="s-img-box bg-green-circle">
+              <img src="" alt="Recommended product" />
+            </div>
+            <div class="s-info-box">
+              <h5></h5>
+              <span class="s-price"></span>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <h3>
-            KOVA
-        </h3>
-
-        <p>
-            Your simple online marketplace.
-        </p>
-
-        <p>
-            © 2026 KOVA. All rights reserved.
-        </p>
-
+    <footer class="shop-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img
+            src="kova-lockup-reverse.svg"
+            alt="KOVA Logo"
+            class="footer-logo"
+          />
+          <p>
+            Curated essentials with fresh pricing, ratings, and stock details.
+          </p>
+          <span class="footer-copyright">Kova — e-commerce storefront</span>
+        </div>
+        <div class="footer-links-group">
+          <h5>Shop</h5>
+          <a href="shop.html">All products</a>
+          <a href="category.html">Categories</a>
+          <a href="#">Deals</a>
+          <a href="#">New in</a>
+        </div>
+        <div class="footer-links-group">
+          <h5>Account</h5>
+          <a href="#">Sign in</a>
+          <a href="cart.html">My cart</a>
+          <a href="#">Order history</a>
+          <a href="#">Wishlist</a>
+        </div>
+        <div class="footer-links-group">
+          <h5>Help</h5>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Warranty</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
     </footer>
 
-
-    <!-- JAVASCRIPT -->
-
-    <script src="js/script.js"></script>
-
-</body>
-
+    <script src="api-client.js"></script>
+    <script src="product-script.js"></script>
+  </body>
 </html>
