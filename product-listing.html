@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Listing</title>
+    <link rel="stylesheet" href="./product-listing.css" />
+  </head>
+  <body>
+    <header class="">
+      <div class="header">
+        <img
+          class="logo"
+          src="./Kova-UI-Kit/02-assets/logo/kova-lockup.svg"
+          alt=""
+        />
+        <nav class="a">
+          <a href="">Shop</a>
+          <a href="">Categories</a>
+          <a href="">Deals</a>
+          <a class="in" href="">New in</a>
+        </nav>
+        <input type="search" placeholder="Search 194 products" />
+        <div class="user-cart">
+          <img src="./Kova-UI-Kit/02-assets/icons/user.svg" alt="" />
+          <img src="./Kova-UI-Kit/02-assets/icons/cart.svg" alt="" />
+        </div>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <nav class="breadcrumbs">
+        <a href="">Home</a> <span>›</span>
+        <a href="">Categories</a>
+        <span>›</span>
+        <!-- <span>Beauty</span -->
+        <a href="">Beauty</a>
+      </nav>
+      <h1>Beauty</h1>
+      <div class="sort-filter">
+        <p>Showing 1-12 of 194 products</p>
+        <div>
+          <select name="" class="select" id="">
+            <option value="price-low">Sort: Price, low to high</option>
+            <option value="price-high">Sort: Price, high to low</option>
+            <option value="rating">Sort: Rating</option>
+            <option value="discount">Sort: Discount</option>
+          </select>
+          <button>
+            <img
+              class="button-img"
+              src="./Kova-UI-Kit/02-assets/icons/filter.svg"
+              alt=""
+            />
+            Filters
+          </button>
+          <button>
+            <img
+              class="button-img"
+              src="./Kova-UI-Kit/02-assets/icons/./grid.svg"
+              alt=""
+            />
+          </button>
+        </div>
+      </div>
+      <div class="listing-layout">
+        <aside class="filters">
+          <div>
+            <div class="filter-heading">
+              <h3>Filters</h3>
+              <button>Clear all</button>
+            </div>
+            <hr />
+            <h4>Category</h4>
+            <div>
+              <label>
+                <input type="checkbox" value="beauty" class="category-filter" />
+                beauty
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="fragrances"
+                  class="category-filter"
+                />
+                fragrances
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="furniture"
+                  class="category-filter"
+                />
+                furniture
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="groceries"
+                  class="category-filter"
+                />
+                groceries
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="laptops"
+                  class="category-filter"
+                />
+                laptops
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  value="smartphones"
+                  class="category-filter"
+                />
+                smartphones
+              </label>
+              <!-- <button class="show-more" id="showMoreCats">Show 18 more</button> -->
+              <!-- Extra categories -->
+              <!-- <button class="show-more" id="showMoreCats">Show 18 more</button> -->
+              <div class="extra-categories">
+                <label>
+                  <input
+                    type="checkbox"
+                    value="groceries"
+                    class="category-filter"
+                  />
+                  groceries
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="motorcycle"
+                    class="category-filter"
+                  />
+                  motorcycle
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="skin-care"
+                    class="category-filter"
+                  />
+                  skin care
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="fragrances"
+                    class="category-filter"
+                  />
+                  fragrances
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="kitchen-accessories"
+                    class="category-filter"
+                  />
+                  kitchen accessories
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="home-decoration"
+                    class="category-filter"
+                  />
+                  home decoration
+                </label>
+
+                <label>
+                  <input type="checkbox" value="tops" class="category-filter" />
+                  tops
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="womens-dresses"
+                    class="category-filter"
+                  />
+                  women's dresses
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="womens-shoes"
+                    class="category-filter"
+                  />
+                  women's shoes
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="mens-shirts"
+                    class="category-filter"
+                  />
+                  men's shirts
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="mens-shoes"
+                    class="category-filter"
+                  />
+                  men's shoes
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="mens-watches"
+                    class="category-filter"
+                  />
+                  men's watches
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="sunglasses"
+                    class="category-filter"
+                  />
+                  sunglasses
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="sports-accessories"
+                    class="category-filter"
+                  />
+                  sports accessories
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="tablets"
+                    class="category-filter"
+                  />
+                  tablets
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="vehicle"
+                    class="category-filter"
+                  />
+                  vehicles
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="laptops"
+                    class="category-filter"
+                  />
+                  laptops
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    value="mobile-accessories"
+                    class="category-filter"
+                  />
+                  mobile accessories
+                </label>
+              </div>
+              <button class="show-more" id="showMoreCats">Show 18 more</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Price</h4>
+            <input
+              type="range"
+              id="priceRange"
+              min="0"
+              max="2000"
+              value="2000"
+            />
+            <div class="range-values">
+              <span>$0</span>
+              <span>$2,000</span>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Rating</h4>
+            <div>
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              /><span>& up</span>
+            </div>
+            <div>
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-empty.svg"
+                alt=""
+              />
+              <span>& up</span>
+            </div>
+            <div>
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-filled.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-empty.svg"
+                alt=""
+              />
+              <img
+                class="rating-img"
+                src="./Kova-UI-Kit/02-assets/./icons/star-empty.svg"
+                alt=""
+              /><span>& up</span>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Availability</h4>
+            <label> <input type="checkbox" /> In stock only </label>
+          </div>
+        </aside>
+        <section>
+          <div>
+            <span class="beauty-span" >beauty ×</span>
+            <span class="beauty-span" >Under $2,000 ×</span>
+          </div>
+          <div class="top-r-div">
+            <div class="top-r-img">
+              <div class="img-box">
+                <span class="main-div2-span1">• -7%</span>
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-beauty.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">BEAUTY</p>
+                <h3 class="top-h3">
+                  Essence Mascara Lash <br />
+                  Princess
+                </h3>
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <span> 4.94 </span>
+                </div>
+                <span>
+                  <span class="current-price"><b>$9.27</b></span>
+                  <span class="old-price">$9.99</span>
+                </span>
+                <p class="low-stock"><b>· Low stock . 5 left</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <!-- <span class="main-div2-span1">• -7%</span> -->
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-mens-watches.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">MENS-WATCHES</p>
+                <h3 class="top-h3">Rolex Submariner Watch</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-empty.svg"
+                    alt=""
+                  />
+                  <span>4.15</span>
+                </div>
+                <span>
+                  <span class="current-price"><b>$13,885.19</b></span>
+                </span>
+                <p class="low-stockk"><b> · In stock</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-furniture.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">FURNITURE</p>
+                <h3 class="top-h3">Annibale Colombo Bed</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <span>4.77</span>
+                </div>
+                <span class="current-price"><b>$1,894.48</b></span>
+                <p class="low-stockk"><b>· In stock</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="top-r-div">
+            <div class="top-r-img">
+              <div class="img-box">
+                <span class="main-div2-span1">• -11%</span>
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-sports.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">SPORTS-ACCESSORIES</p>
+                <h3 class="top-h3">Cricket Helmelt</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/./02-assets/icons/star-empty.svg"
+                    alt=""
+                  />
+                  <span>4.9</span>
+                </div>
+                <span class="current-price"><b>$39.83</b></span>
+                <span class="old-price"> $44.99</span>
+                <p class="low-stockk"><b>· In stock</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <!-- <span class="main-div2-span1">• -7%</span> -->
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-fragrances.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">FRAGRANCES</p>
+                <h3 class="top-h3">Calvin Klein CK One</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <span> 4.85 </span>
+                </div>
+                <span>
+                  <span class="current-price"><b>$49.05</b></span>
+                  <!-- <span class="old-price">$9.99</span> -->
+                </span>
+                <p class="low-stockk"><b>· In stock</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <span class="main-div2-span1">• -11%</span>
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-laptops.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">LAPTOPS</p>
+                <h3 class="top-h3">
+                  Apple MacBook Pro 14 Inch <br />
+                  Space Grey
+                </h3>
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <span>4.51</span>
+                </div>
+                <span>
+                  <span class="current-price"><b>$1,785.59</b></span>
+                  <span class="old-price">$1,999.99</span>
+                </span>
+                <p class="low-stockk"><b> · In stock</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="top-r-div">
+            <div class="top-r-img">
+              <div class="img-box">
+                <span class="main-div2-span1">• -6%</span>
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-smartphones.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">SMARTPHONE</p>
+                <h3 class="top-h3">iPhone 6</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <span>4.55</span>
+                </div>
+                <span class="current-price"><b>$283.10</b></span>
+                <span class="old-price">$299.99</span>
+                <p class="low-stock"><b>· Out of stock</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <!-- <span class="main-div2-span1">• -11%</span> -->
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/product-placeholders/ph-sunglasses.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">MOBILE-ACCESORIES</p>
+                <h3 class="top-h3">Apple AirPods Max Silver</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/./02-assets/icons/star-empty.svg"
+                    alt=""
+                  />
+                  <span>4.36</span>
+                </div>
+                <span class="current-price"><b>$536.79</b></span>
+                <!-- <span class="old-price"> $44.99</span> -->
+                <p class="low-stockk"><b>· In stock</b></p>
+              </div>
+            </div>
+            <div class="top-r-img">
+              <div class="img-box">
+                <span class="main-div2-span1">• -13%</span>
+                <button class="wishlist">♡</button>
+                <img
+                  class="top-img"
+                  src="./Kova-UI-Kit/02-assets/./product-placeholders/ph-vehicle.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="lash-beauty">
+                <p class="browsee">VEHICLES</p>
+                <h3>Charger SXT RWD</h3>
+                <br />
+                <div class="top-mainn">
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/02-assets/icons/star-filled.svg"
+                    alt=""
+                  />
+                  <img
+                    class="main-starrr"
+                    src="./Kova-UI-Kit/./02-assets/icons/star-empty.svg"
+                    alt=""
+                  />
+                  <span>4.16</span>
+                </div>
+                <span class="current-price"><b>$28,581.29</b></span>
+                <span class="old-price"> $32,999.99</span>
+                <p class="low-stockk"><b>· In stock</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="pagination">
+            <button>‹</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <span>...</span>
+            <button>17</button>
+            <button>›</button>
+          </div>
+          <p class="page-note">?limit=12&skip=0 · 17 pages</p>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a href="#" class="footer-logo">
+              <!-- <span class="logo-mark"></pan> -->
+              <span>
+                <img
+                  class="logo-mark"
+                  src="./Kova-UI-Kit/02-assets/logo/./kova-lockup-reverse.svg"
+                  alt=""
+                />
+              </span>
+            </a>
+            <p>
+              194 products across 24 categories. Every price, rating and stock
+              level comes straight from the API.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Shop</h3>
+            <a href="#">All products</a>
+            <a href="#">Categories</a>
+            <a href="#">Deals</a>
+            <a href="#">New in</a>
+          </div>
+          <div class="footer-column">
+            <h3>Account</h3>
+            <a href="#">Sign in</a>
+            <a href="#">My cart</a>
+            <a href="#">Order history</a>
+            <a href="#">Wishlist</a>
+          </div>
+          <div class="footer-column">
+            <h3>Help</h3>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">Warranty</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Kova — a teaching storefront</span>
+          <span>Data: dummyjson.com</span>
+        </div>
+      </div>
+    </footer>
+    <script src="./product-listing.js"></script>
+  </body>
+</html>

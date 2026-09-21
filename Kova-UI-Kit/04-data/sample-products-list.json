@@ -1,0 +1,11 @@
+{
+  "products": [
+    { "id": 1, "title": "Essence Mascara Lash Princess", "category": "beauty", "price": 9.99, "discountPercentage": 7.17, "rating": 4.94, "stock": 5, "availabilityStatus": "Low Stock", "brand": "Essence", "thumbnail": "https://cdn.dummyjson.com/..." },
+    { "id": 11, "title": "Annibale Colombo Bed", "category": "furniture", "price": 1899.99, "discountPercentage": 0.29, "rating": 4.77, "stock": 47, "availabilityStatus": "In Stock", "brand": "Annibale Colombo", "thumbnail": "https://cdn.dummyjson.com/..." },
+    { "id": 98, "title": "Rolex Submariner Watch", "category": "mens-watches", "price": 13999.99, "discountPercentage": 0.82, "rating": 4.15, "stock": 32, "availabilityStatus": "In Stock", "brand": "Rolex", "thumbnail": "https://cdn.dummyjson.com/..." },
+    { "id": 144, "title": "Cricket Helmet", "category": "sports-accessories", "price": 44.99, "discountPercentage": 11.47, "rating": 4.19, "stock": 62, "availabilityStatus": "In Stock", "thumbnail": "https://cdn.dummyjson.com/..." }
+  ],
+  "total": 194,
+  "skip": 0,
+  "limit": 30
+}
