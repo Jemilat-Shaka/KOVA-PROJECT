@@ -5,7 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>KOVA - Checkout</title>
 
@@ -13,133 +16,114 @@
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+<header class="kova-header">
 
-    <header>
+    <a href="shop.html">
+        <img
+            src="./Kova-UI-Kit/02-assets/logo/kova-lockup.svg"
+            alt="KOVA"
+            width="110"
+        >
+    </a>
 
-        <div class="logo">
-            KOVA
-        </div>
+    <a href="cart.html">
+        Back to Cart
+    </a>
 
-        <nav>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="products.html">
-                Products
-            </a>
-
-            <a href="#">
-                Categories
-            </a>
-
-        </nav>
-
-        <a href="cart.html" class="cart">
-            🛒 Cart
-        </a>
-
-    </header>
+</header>
 
 
-    <!-- CHECKOUT -->
+<main class="checkout-page">
 
-    <main class="checkout-page">
+    <h1>Checkout</h1>
 
-        <div class="breadcrumb">
+    <form id="checkoutForm">
 
-            <a href="index.html">
-                Home
-            </a>
+        <div class="checkout-field">
 
-            /
-
-            <a href="cart.html">
-                Cart
-            </a>
-
-            / Checkout
-
-        </div>
-
-
-        <h1>
-            Checkout
-        </h1>
-
-
-        <form id="checkoutForm" novalidate>
-
-            <h2>
-                Customer Information
-            </h2>
-
-
-            <label for="name">
+            <label for="fullName">
                 Full Name
             </label>
 
             <input
+                id="fullName"
+                name="fullName"
                 type="text"
-                id="name"
-                placeholder="Enter your full name"
                 required
             >
 
+        </div>
+
+
+        <div class="checkout-field">
 
             <label for="email">
-                Email Address
+                Email
             </label>
 
             <input
-                type="email"
                 id="email"
-                placeholder="Enter your email"
+                name="email"
+                type="email"
                 required
             >
 
+        </div>
+
+
+        <div class="checkout-field">
 
             <label for="address">
-                Delivery Address
+                Address
             </label>
 
             <input
-                type="text"
                 id="address"
-                placeholder="Enter your address"
+                name="address"
+                type="text"
                 required
             >
 
+        </div>
+
+
+        <div class="checkout-field">
 
             <label for="phone">
                 Phone Number
             </label>
 
             <input
-                type="tel"
                 id="phone"
-                placeholder="Enter your phone number"
+                name="phone"
+                type="tel"
                 required
             >
 
+        </div>
 
-            <h2>
+
+        <div class="checkout-field">
+
+            <label for="payment">
                 Payment Method
-            </h2>
+            </label>
 
-
-            <select id="paymentMethod" required>
+            <select
+                id="payment"
+                name="payment"
+                required
+            >
 
                 <option value="">
                     Select payment method
                 </option>
 
                 <option value="card">
-                    Card
+                    Credit / Debit Card
                 </option>
 
                 <option value="transfer">
@@ -152,49 +136,57 @@
 
             </select>
 
-
-            <button type="submit">
-                Place Order
-            </button>
-
-        </form>
-
-    </main>
+        </div>
 
 
-    <!-- FOOTER -->
+        <button
+            type="submit"
+            class="kova-checkout-button"
+        >
+            Place Order
+        </button>
 
-    <footer>
+    </form>
 
-        <h3>
-            KOVA
-        </h3>
-
-        <p>
-            Your simple online marketplace.
-        </p>
-
-        <p>
-            © 2026 KOVA. All rights reserved.
-        </p>
-
-    </footer>
+</main>
 
 
-    <!-- JAVASCRIPT -->
+<script>
 
-    <script>
-const checkoutForm = document.querySelector("#checkoutForm");
+const checkoutForm =
+    document.getElementById("checkoutForm");
 
-checkoutForm.addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    alert("Order placed successfully! 🎉 Thank you for shopping with KOVA.");
+checkoutForm.addEventListener(
+    "submit",
+    function(event) {
 
-    localStorage.removeItem("kovaCart");
+        event.preventDefault();
 
-    window.location.href = "order-success.html";
-});
+
+        /* Clear the same cart storage used
+           by Product Details Add to Cart */
+
+        localStorage.removeItem(
+            "kovaCartItems"
+        );
+
+        localStorage.removeItem(
+            "kovaCart"
+        );
+
+
+        alert(
+            "Order placed successfully! 🎉 Thank you for shopping with KOVA."
+        );
+
+
+        window.location.href =
+            "order-success.html";
+
+    }
+);
+
 </script>
 
 </body>

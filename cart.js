@@ -1,632 +1,330 @@
-""// ================================
-// KOVA CART SYSTEM
-// ================================
+/* =========================================
+   KOVA CART
+   Connects to the existing Product Details
+   Add-to-Cart system.
 
-const cartItems = document.querySelector("#cartItems");
-
-
-if (cartItems) {
-
-    let undoCart = null;
-    let undoTimer = null;
+   Storage key:
+   kovaCartItems
+========================================= */
 
 
-    // ================================
-    // FORMAT PRICE
-    // ================================
+/* =========================================
+   GET CART
+========================================= */
 
-    function formatPrice(value) {
+function getCart() {
 
-        return `$${Number(value || 0).toFixed(2)}`;
+    const savedItems = localStorage.getItem("kovaCartItems");
 
-    }
-
-
-    // ================================
-    // ESCAPE TEXT
-    // ================================
-
-    function escapeHTML(value) {
-
-        return String(value || "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
-
-
-    // ================================
-    // GET CART
-    // ================================
-
-    function getCart() {
-
-        return JSON.parse(
-            localStorage.getItem("kovaCart")
-        ) || [];
-
-    }
-
-
-    // ================================
-    // SAVE CART
-    // ================================
-
-    function saveCart(cart) {
-
-        localStorage.setItem(
-            "kovaCart",
-            JSON.stringify(cart)
-        );
-
-    }
-
-
-    // ================================
-    // GROUP CART PRODUCTS
-    // ================================
-
-    function groupCart(cart) {
-
-        const grouped = {};
-
-        cart.forEach(function(product) {
-
-            const id = String(product.id);
-
-            if (grouped[id]) {
-
-                grouped[id].quantity++;
-
-            } else {
-
-                grouped[id] = {
-                    id: product.id,
-                    title: product.title,
-                    price: Number(product.price) || 0,
-                    thumbnail: product.thumbnail,
-                    quantity: 1,
-
-                    category: "",
-                    stock: 999,
-                    minimumOrderQuantity: 1,
-                    discountPercentage: 0
-                };
-
-            }
-
-        });
-
-        return Object.values(grouped);
-
-    }
-
-
-    // ================================
-    // GET PRODUCT INFORMATION
-    // ================================
-
-    async function getProductInformation(product) {
+    if (savedItems) {
 
         try {
 
-            const response = await fetch(
-                `https://dummyjson.com/products/${product.id}`
-            );
+            const items = JSON.parse(savedItems);
 
-            if (!response.ok) {
-                return product;
+            if (Array.isArray(items)) {
+
+                const cart = [];
+
+                items.forEach(function(item) {
+
+                    const quantity =
+                        Number(item.quantity) > 0
+                            ? Number(item.quantity)
+                            : 1;
+
+                    for (let i = 0; i < quantity; i++) {
+
+                        cart.push({
+
+                            id: item.id,
+
+                            title:
+                                item.title ||
+                                item.name ||
+                                "Product",
+
+                            price:
+                                Number(item.price) || 0,
+
+                            thumbnail:
+                                item.thumbnail ||
+                                item.image ||
+                                "",
+
+                            category:
+                                item.category ||
+                                "General"
+
+                        });
+
+                    }
+
+                });
+
+                return cart;
             }
-
-            const data = await response.json();
-
-            return {
-                ...product,
-
-                category: data.category || "",
-                stock: Number(data.stock) || 999,
-                minimumOrderQuantity:
-                    Number(data.minimumOrderQuantity) || 1,
-                discountPercentage:
-                    Number(data.discountPercentage) || 0,
-
-                // Keep the cart's saved values first
-                title: product.title || data.title,
-                price:
-                    Number(product.price) ||
-                    Number(data.price) ||
-                    0,
-
-                thumbnail:
-                    product.thumbnail ||
-                    data.thumbnail
-            };
 
         } catch (error) {
 
-            console.log(
-                "Could not load product information:",
-                error
-            );
+            console.log("Could not read cart:", error);
+
+        }
+
+    }
+
+    return [];
+}
+
+
+/* =========================================
+   SAVE CART
+========================================= */
+
+function saveCart(cart) {
+
+    const grouped = {};
+
+    cart.forEach(function(product) {
+
+        const key =
+            product.id !== null &&
+            product.id !== undefined
+                ? String(product.id)
+                : String(product.title);
+
+
+        if (!grouped[key]) {
+
+            grouped[key] = {
+
+                id: product.id ?? null,
+
+                name:
+                    product.title ||
+                    product.name ||
+                    "Product",
+
+                title:
+                    product.title ||
+                    product.name ||
+                    "Product",
+
+                image:
+                    product.thumbnail ||
+                    product.image ||
+                    null,
+
+                price:
+                    Number(product.price) || 0,
+
+                category:
+                    product.category ||
+                    "General",
+
+                quantity: 1
+
+            };
+
+        } else {
+
+            grouped[key].quantity++;
+
+        }
+
+    });
+
+
+    localStorage.setItem(
+        "kovaCartItems",
+        JSON.stringify(Object.values(grouped))
+    );
+
+}
+
+
+/* =========================================
+   GROUP CART
+========================================= */
+
+function groupCart(cart) {
+
+    const grouped = {};
+
+    cart.forEach(function(product) {
+
+        const key =
+            product.id !== null &&
+            product.id !== undefined
+                ? String(product.id)
+                : String(product.title);
+
+
+        if (!grouped[key]) {
+
+            grouped[key] = {
+
+                id: product.id,
+
+                title:
+                    product.title ||
+                    product.name ||
+                    "Product",
+
+                price:
+                    Number(product.price) || 0,
+
+                thumbnail:
+                    product.thumbnail ||
+                    product.image ||
+                    "",
+
+                category:
+                    product.category ||
+                    "General",
+
+                quantity: 0
+
+            };
+
+        }
+
+        grouped[key].quantity++;
+
+    });
+
+    return Object.values(grouped);
+}
+
+
+/* =========================================
+   GET PRODUCT INFORMATION
+========================================= */
+
+async function getProductInformation(product) {
+
+    if (
+        product.id === null ||
+        product.id === undefined ||
+        product.id === ""
+    ) {
+
+        return product;
+
+    }
+
+
+    try {
+
+        const response = await fetch(
+            "https://dummyjson.com/products/" + product.id
+        );
+
+        if (!response.ok) {
 
             return product;
 
         }
 
-    }
+        const data = await response.json();
 
 
-    // ================================
-    // STOCK STATUS
-    // ================================
+        return {
 
-    function getStockHTML(stock) {
+            ...product,
 
-        stock = Number(stock);
+            title:
+                data.title ||
+                product.title,
 
-        if (stock <= 0) {
+            price:
+                Number(data.price) ||
+                Number(product.price) ||
+                0,
 
-            return `
-                <p class="kova-stock kova-stock-out">
-                    Out of stock
-                </p>
-            `;
+            thumbnail:
+                data.thumbnail ||
+                product.thumbnail,
 
-        }
+            category:
+                data.category ||
+                product.category ||
+                "General",
 
-        if (stock <= 10) {
+            discountPercentage:
+                Number(data.discountPercentage) || 0
 
-            return `
-                <p class="kova-stock kova-stock-low">
-                    Only ${stock} left
-                </p>
-            `;
+        };
 
-        }
+    } catch (error) {
 
-        return `
-            <p class="kova-stock kova-stock-in">
-                In stock
-            </p>
-        `;
-
-    }
-
-
-    // ================================
-    // DISCOUNT HTML
-    // ================================
-
-    function getDiscountHTML(product) {
-
-        const discount =
-            Number(product.discountPercentage) || 0;
-
-        if (discount < 5) {
-
-            return "";
-
-        }
-
-        const oldPrice =
-            product.price / (1 - discount / 100);
-
-        return `
-            <span class="kova-discount-tag">
-                ${discount.toFixed(0)}% OFF
-            </span>
-
-            <span class="kova-price-old">
-                ${formatPrice(oldPrice)}
-            </span>
-        `;
-
-    }
-
-
-    // ================================
-    // DISPLAY CART
-    // ================================
-
-    async function displayCart() {
-
-        const rawCart = getCart();
-
-        cartItems.innerHTML = `
-            <div class="kova-cart-loading">
-                Loading your cart...
-            </div>
-        `;
-
-
-        // ================================
-        // EMPTY CART
-        // ================================
-
-        if (rawCart.length === 0) {
-
-            showEmptyCart();
-
-            return;
-
-        }
-
-
-        // ================================
-        // GROUP PRODUCTS
-        // ================================
-
-        let products = groupCart(rawCart);
-
-
-        // ================================
-        // GET EXTRA PRODUCT INFORMATION
-        // ================================
-
-        products = await Promise.all(
-
-            products.map(function(product) {
-
-                return getProductInformation(product);
-
-            })
-
+        console.log(
+            "Could not fetch product information:",
+            error
         );
 
-
-        // ================================
-        // CHECK CART DIDN'T CHANGE
-        // ================================
-
-        const currentCart =
-            getCart();
-
-        if (currentCart.length === 0) {
-
-            showEmptyCart();
-
-            return;
-
-        }
-
-
-        // ================================
-        // TOTALS
-        // ================================
-
-        let subtotal = 0;
-
-        let discountTotal = 0;
-
-        let totalQuantity = 0;
-
-
-        products.forEach(function(product) {
-
-            const quantity =
-                Number(product.quantity) || 1;
-
-            const price =
-                Number(product.price) || 0;
-
-            const discount =
-                Number(product.discountPercentage) || 0;
-
-            const productSubtotal =
-                price * quantity;
-
-            subtotal += productSubtotal;
-
-            totalQuantity += quantity;
-
-
-            if (discount > 0) {
-
-                const discountedPrice =
-                    price * (1 - discount / 100);
-
-                const discountAmount =
-                    (price - discountedPrice) * quantity;
-
-                discountTotal += discountAmount;
-
-            }
-
-        });
-
-
-        const finalTotal =
-            subtotal - discountTotal;
-
-
-        // ================================
-        // UPDATE HEADER COUNT
-        // ================================
-
-        const cartCount =
-            document.querySelector("#cartCount");
-
-        if (cartCount) {
-
-            cartCount.textContent =
-                `${products.length} product${products.length !== 1 ? "s" : ""} · ${totalQuantity} item${totalQuantity !== 1 ? "s" : ""}`;
-
-        }
-
-
-        // ================================
-        // UPDATE SUMMARY
-        // ================================
-
-        const cartSubtotal =
-            document.querySelector("#cartSubtotal");
-
-        const cartDiscount =
-            document.querySelector("#cartDiscount");
-
-        const finalTotalElement =
-            document.querySelector("#finalTotal");
-
-
-        if (cartSubtotal) {
-
-            cartSubtotal.textContent =
-                formatPrice(subtotal);
-
-        }
-
-
-        if (cartDiscount) {
-
-            cartDiscount.textContent =
-                `−${formatPrice(discountTotal)}`;
-
-        }
-
-
-        if (finalTotalElement) {
-
-            finalTotalElement.textContent =
-                formatPrice(finalTotal);
-
-        }
-
-
-        // ================================
-        // DISPLAY PRODUCTS
-        // ================================
-
-        cartItems.innerHTML = "";
-
-
-        products.forEach(function(product) {
-
-            const price =
-                Number(product.price) || 0;
-
-            const quantity =
-                Number(product.quantity) || 1;
-
-            const discount =
-                Number(product.discountPercentage) || 0;
-
-
-            let discountedPrice = price;
-
-            if (discount > 0) {
-
-                discountedPrice =
-                    price * (1 - discount / 100);
-
-            }
-
-
-            const lineTotal =
-                discountedPrice * quantity;
-
-
-            const item =
-                document.createElement("article");
-
-
-            item.className =
-                "kova-cart-item";
-
-
-            item.innerHTML = `
-
-                <!-- PRODUCT IMAGE -->
-
-                <div class="kova-cart-thumbnail">
-
-                    <img
-                        src="${escapeHTML(product.thumbnail)}"
-                        alt="${escapeHTML(product.title)}"
-                    >
-
-                </div>
-
-
-                <!-- PRODUCT INFORMATION -->
-
-                <div class="kova-cart-info">
-
-                    <p class="kova-cart-category">
-
-                        ${escapeHTML(
-                            product.category || "Product"
-                        )}
-
-                    </p>
-
-
-                    <h3 class="kova-cart-title">
-
-                        ${escapeHTML(product.title)}
-
-                    </h3>
-
-
-                    <div class="kova-cart-price">
-
-                        <span class="kova-price-current">
-
-                            ${formatPrice(discountedPrice)}
-
-                        </span>
-
-                        ${getDiscountHTML(product)}
-
-                    </div>
-
-
-                    ${getStockHTML(product.stock)}
-
-                </div>
-
-
-                <!-- QUANTITY -->
-
-                <div class="kova-quantity-stepper">
-
-                    <button
-                        type="button"
-                        onclick="changeQuantity(${product.id}, -1)"
-                        aria-label="Decrease quantity"
-                    >
-                        −
-                    </button>
-
-
-                    <span class="kova-quantity-value">
-
-                        ${quantity}
-
-                    </span>
-
-
-                    <button
-                        type="button"
-                        onclick="changeQuantity(${product.id}, 1)"
-                        aria-label="Increase quantity"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-
-                <!-- LINE TOTAL -->
-
-                <div class="kova-line-total">
-
-                    ${formatPrice(lineTotal)}
-
-                </div>
-
-
-                <!-- REMOVE -->
-
-                <button
-                    type="button"
-                    class="kova-remove-button"
-                    onclick="removeProduct(${product.id})"
-                    aria-label="Remove ${escapeHTML(product.title)}"
-                    title="Remove"
-                >
-                    🗑
-                </button>
-
-            `;
-
-
-            cartItems.appendChild(item);
-
-        });
-
-
-        // ================================
-        // SHOW CART ACTIONS
-        // ================================
-
-        const cartActions =
-            document.querySelector("#cartActions");
-
-        if (cartActions) {
-
-            cartActions.style.display = "flex";
-
-        }
+        return product;
 
     }
 
-
-    // ================================
-    // EMPTY CART
-    // ================================
-
-    function showEmptyCart() {
-
-        cartItems.innerHTML = `
-
-            <div class="kova-empty-cart">
-
-                <div class="kova-empty-icon">
-                    🛒
-                </div>
+}
 
 
-                <h2>
-                    Your cart is empty
-                </h2>
+/* =========================================
+   DISPLAY CART
+========================================= */
+
+async function displayCart() {
+
+    const cartContainer =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    const subtotalElement =
+        document.getElementById("cartSubtotal");
+
+    const discountElement =
+        document.getElementById("cartDiscount");
+
+    const totalElement =
+        document.getElementById("finalTotal");
 
 
-                <p>
-                    Nothing here yet. Browse products across KOVA
-                    and add something you like.
-                </p>
+    const cart = getCart();
+
+    const groupedCart = groupCart(cart);
 
 
-                <div class="kova-empty-actions">
+    /* EMPTY CART */
+
+    if (groupedCart.length === 0) {
+
+        if (cartContainer) {
+
+            cartContainer.innerHTML = `
+
+                <div class="kova-empty-cart">
+
+                    <h2>Your cart is empty</h2>
+
+                    <p>
+                        You haven't added anything to your cart yet.
+                    </p>
 
                     <a
                         href="products.html"
                         class="kova-button kova-button-secondary"
                     >
-                        Browse products
-                    </a>
-
-
-                    <a
-                        href="products.html?filter=deals"
-                        class="kova-button kova-checkout-button"
-                    >
-                        View deals
+                        Continue shopping
                     </a>
 
                 </div>
 
-            </div>
+            `;
 
-        `;
-
-
-        // Reset summary
-
-        const cartCount =
-            document.querySelector("#cartCount");
-
-        const cartSubtotal =
-            document.querySelector("#cartSubtotal");
-
-        const cartDiscount =
-            document.querySelector("#cartDiscount");
-
-        const finalTotal =
-            document.querySelector("#finalTotal");
+        }
 
 
         if (cartCount) {
@@ -637,410 +335,394 @@ if (cartItems) {
         }
 
 
-        if (cartSubtotal) {
+        if (subtotalElement) {
 
-            cartSubtotal.textContent =
+            subtotalElement.textContent =
                 "$0.00";
 
         }
 
 
-        if (cartDiscount) {
+        if (discountElement) {
 
-            cartDiscount.textContent =
+            discountElement.textContent =
                 "−$0.00";
 
         }
 
 
-        if (finalTotal) {
+        if (totalElement) {
 
-            finalTotal.textContent =
+            totalElement.textContent =
                 "$0.00";
 
         }
 
 
-        const cartActions =
-            document.querySelector("#cartActions");
-
-        if (cartActions) {
-
-            cartActions.style.display = "none";
-
-        }
+        return;
 
     }
 
 
-    // ================================
-    // CHANGE QUANTITY
-    // ================================
+    /* GET DETAILS */
 
-    window.changeQuantity =
-        async function(productId, change) {
+    const products = [];
 
-        let cart = getCart();
+    for (const product of groupedCart) {
 
-
-        // ================================
-        // ADD ONE
-        // ================================
-
-        if (change === 1) {
-
-            const product =
-                cart.find(function(item) {
-
-                    return String(item.id) ===
-                        String(productId);
-
-                });
-
-
-            if (product) {
-
-                cart.push({
-
-                    id: product.id,
-
-                    title: product.title,
-
-                    price: product.price,
-
-                    thumbnail: product.thumbnail
-
-                });
-
-            }
-
-        }
-
-
-        // ================================
-        // REMOVE ONE
-        // ================================
-
-        if (change === -1) {
-
-            const index =
-                cart.findIndex(function(item) {
-
-                    return String(item.id) ===
-                        String(productId);
-
-                });
-
-
-            if (index !== -1) {
-
-                cart.splice(index, 1);
-
-            }
-
-        }
-
-
-        saveCart(cart);
-
-        await displayCart();
-
-    };
-
-
-    // ================================
-    // REMOVE ENTIRE PRODUCT
-    // ================================
-
-    window.removeProduct =
-        function(productId) {
-
-        const cart = getCart();
-
-
-        const removedItems =
-            cart.filter(function(product) {
-
-                return String(product.id) ===
-                    String(productId);
-
-            });
-
-
-        if (removedItems.length === 0) {
-
-            return;
-
-        }
-
-
-        // Save for undo
-
-        undoCart = removedItems;
-
-
-        // Remove product
-
-        const newCart =
-            cart.filter(function(product) {
-
-                return String(product.id) !==
-                    String(productId);
-
-            });
-
-
-        saveCart(newCart);
-
-
-        displayCart();
-
-
-        showUndoToast(
-            removedItems[0].title,
-            removedItems
-        );
-
-    };
-
-
-    // ================================
-    // CLEAR CART
-    // ================================
-
-    function clearCart() {
-
-        const cart = getCart();
-
-
-        if (cart.length === 0) {
-
-            return;
-
-        }
-
-
-        undoCart = cart;
-
-
-        saveCart([]);
-
-
-        displayCart();
-
-
-        showUndoToast(
-            "All products",
-            cart
+        products.push(
+            await getProductInformation(product)
         );
 
     }
 
 
-    // ================================
-    // UNDO TOAST
-    // ================================
+    /* TOTALS */
 
-    function showUndoToast(
-        productName,
-        items
-    ) {
+    let subtotal = 0;
 
-        const oldToast =
-            document.querySelector(
-                ".kova-undo-toast"
-            );
+    let discount = 0;
+
+    let totalItems = 0;
 
 
-        if (oldToast) {
+    products.forEach(function(product) {
 
-            oldToast.remove();
+        const quantity =
+            Number(product.quantity) || 1;
 
-        }
+        const price =
+            Number(product.price) || 0;
+
+        const discountPercentage =
+            Number(product.discountPercentage) || 0;
 
 
-        const toast =
+        subtotal +=
+            price * quantity;
+
+
+        discount +=
+            price *
+            quantity *
+            (discountPercentage / 100);
+
+
+        totalItems += quantity;
+
+    });
+
+
+    const total =
+        subtotal - discount;
+
+
+    /* CART COUNT */
+
+    if (cartCount) {
+
+        cartCount.textContent =
+            products.length +
+            " products · " +
+            totalItems +
+            " items";
+
+    }
+
+
+    /* SUMMARY */
+
+    if (subtotalElement) {
+
+        subtotalElement.textContent =
+            "$" + subtotal.toFixed(2);
+
+    }
+
+
+    if (discountElement) {
+
+        discountElement.textContent =
+            "−$" + discount.toFixed(2);
+
+    }
+
+
+    if (totalElement) {
+
+        totalElement.textContent =
+            "$" + total.toFixed(2);
+
+    }
+
+
+    /* RENDER */
+
+    if (!cartContainer) {
+
+        return;
+
+    }
+
+
+    cartContainer.innerHTML = "";
+
+
+    products.forEach(function(product) {
+
+        const item =
             document.createElement("div");
 
 
-        toast.className =
-            "kova-undo-toast";
+        item.className =
+            "kova-cart-item";
 
 
-        toast.innerHTML = `
+        item.innerHTML = `
 
-            <span>
-                ${escapeHTML(productName)} removed
-            </span>
-
-            <button
-                type="button"
-                id="undoCartButton"
+            <img
+                class="kova-cart-item-image"
+                src="${product.thumbnail || ""}"
+                alt="${product.title}"
             >
-                Undo
-            </button>
+
+            <div class="kova-cart-item-info">
+
+                <div class="kova-cart-item-category">
+                    ${product.category || "General"}
+                </div>
+
+                <h3 class="kova-cart-item-title">
+                    ${product.title}
+                </h3>
+
+                <div class="kova-cart-item-price">
+                    $${Number(product.price).toFixed(2)}
+                </div>
+
+                <div class="kova-cart-item-controls">
+
+                    <div class="kova-quantity-control">
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(${JSON.stringify(product.id)}, -1)"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            ${product.quantity}
+                        </span>
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(${JSON.stringify(product.id)}, 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="kova-remove-button"
+                        onclick="removeProduct(${JSON.stringify(product.id)})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
 
         `;
 
 
-        document.body.appendChild(toast);
+        cartContainer.appendChild(item);
+
+    });
+
+}
 
 
-        const undoButton =
-            document.querySelector(
-                "#undoCartButton"
-            );
+/* =========================================
+   CHANGE QUANTITY
+========================================= */
+
+window.changeQuantity = function(productId, amount) {
+
+    const cart = getCart();
 
 
-        if (undoButton) {
+    const index =
+        cart.findIndex(function(product) {
 
-            undoButton.addEventListener(
-                "click",
-                function() {
+            return String(product.id) ===
+                String(productId);
 
-                    undoRemove(items);
-
-                }
-            );
-
-        }
+        });
 
 
-        clearTimeout(undoTimer);
+    if (index === -1) {
 
-
-        undoTimer =
-            setTimeout(function() {
-
-                toast.remove();
-
-                undoCart = null;
-
-            }, 5000);
+        return;
 
     }
 
 
-    // ================================
-    // UNDO REMOVE
-    // ================================
+    if (amount > 0) {
 
-    async function undoRemove(items) {
+        cart.push({
+            ...cart[index]
+        });
 
-        if (!items || items.length === 0) {
+    } else {
 
-            return;
-
-        }
-
-
-        let cart = getCart();
-
-
-        cart =
-            cart.concat(items);
-
-
-        saveCart(cart);
-
-
-        undoCart = null;
-
-
-        clearTimeout(undoTimer);
-
-
-        const toast =
-            document.querySelector(
-                ".kova-undo-toast"
-            );
-
-
-        if (toast) {
-
-            toast.remove();
-
-        }
-
-
-        await displayCart();
+        cart.splice(index, 1);
 
     }
 
 
-    // ================================
-    // CLEAR BUTTONS
-    // ================================
+    saveCart(cart);
 
-    const clearCartTop =
-        document.querySelector("#clearCartTop");
+    displayCart();
 
-
-    if (clearCartTop) {
-
-        clearCartTop.addEventListener(
-            "click",
-            clearCart
-        );
-
-    }
+};
 
 
-    const clearCartBottom =
-        document.querySelector("#clearCartBottom");
+/* =========================================
+   REMOVE PRODUCT
+========================================= */
+
+window.removeProduct = function(productId) {
+
+    const cart = getCart();
 
 
-    if (clearCartBottom) {
+    const updatedCart =
+        cart.filter(function(product) {
 
-        clearCartBottom.addEventListener(
-            "click",
-            clearCart
-        );
+            return String(product.id) !==
+                String(productId);
 
-    }
-
-
-    // ================================
-    // CHECKOUT BUTTON
-    // ================================
-
-    const checkoutButton =
-        document.querySelector("#checkoutButton");
+        });
 
 
-    if (checkoutButton) {
+    saveCart(updatedCart);
 
-        checkoutButton.addEventListener(
-            "click",
-            function() {
+    displayCart();
 
-                const cart = getCart();
+};
 
 
-                if (cart.length === 0) {
+/* =========================================
+   CLEAR CART
+========================================= */
 
-                    alert(
-                        "Your cart is empty."
-                    );
+function clearCart() {
 
-                    return;
-
-                }
-
-
-                window.location.href =
-                    "checkout.html";
-
-            }
-        );
-
-    }
-
-
-    // ================================
-    // START CART
-    // ================================
+    localStorage.removeItem(
+        "kovaCartItems"
+    );
 
     displayCart();
 
 }
+
+
+/* =========================================
+   CLEAR BUTTONS
+========================================= */
+
+const clearTop =
+    document.getElementById("clearCartTop");
+
+const clearBottom =
+    document.getElementById("clearCartBottom");
+
+
+if (clearTop) {
+
+    clearTop.addEventListener(
+        "click",
+        clearCart
+    );
+
+}
+
+
+if (clearBottom) {
+
+    clearBottom.addEventListener(
+        "click",
+        clearCart
+    );
+
+}
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+const checkoutButton =
+    document.getElementById("checkoutButton");
+
+
+if (checkoutButton) {
+
+    checkoutButton.addEventListener(
+        "click",
+        function() {
+
+            const cart =
+                getCart();
+
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Your cart is empty."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                "checkout.html";
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   UPDATE CART
+   If another page changes localStorage
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function(event) {
+
+        if (
+            event.key === "kovaCartItems"
+        ) {
+
+            displayCart();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+displayCart();
