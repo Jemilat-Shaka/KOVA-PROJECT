@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KOVA - Search Results</title>
+    <link rel="stylesheet" href="search-results.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="shop.html"
+          ><img
+            src="./Kova-UI-Kit/02-assets/logo/kova-lockup.svg"
+            alt="KOVA Logo"
+            class="nav-logo"
+        /></a>
+        <nav class="nav-links">
+          <a href="shop.html" class="active">Shop</a>
+          <a href="category.html">Categories</a>
+          <a href="#">Deals</a>
+          <a href="#">New in</a>
+        </nav>
+      </div>
+
+      <div class="nav-search-container search-with-button">
+        <img
+          src="./Kova-UI-Kit/02-assets/icons/search.svg"
+          alt="Search"
+          class="search-icon"
+        />
+        <input
+          type="text"
+          id="storeSearchInput"
+          placeholder="Search products"
+          aria-label="Search products"
+        />
+        <button type="button" id="searchButton" class="search-button">
+          Search
+        </button>
+      </div>
+
+      <div class="nav-right">
+        <img
+          src="./Kova-UI-Kit/02-assets/icons/user.svg"
+          alt="Account"
+          class="nav-icon"
+        />
+        <a href="cart.html" class="cart-link" aria-label="View cart">
+          <div class="cart-icon-wrapper">
+            <img
+              src="./Kova-UI-Kit/02-assets/icons/cart.svg"
+              alt="Cart"
+              class="nav-icon"
+            />
+            <span id="cartCountBadge" class="cart-badge">0</span>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main class="shop-container">
+      <div class="search-summary-header">
+        <h1 class="page-title search-title" id="searchTitle">
+          Results for "all products"
+        </h1>
+        <p class="products-found-subtitle search-subtitle" id="searchSubtitle">
+          Showing all products.
+        </p>
+      </div>
+
+      <section class="section-block">
+        <div class="products-grid-four" id="searchResultsGrid">
+          <div
+            class="product-card"
+            data-item-name="airpods"
+            data-product-key="airpods"
+          >
+            <div class="card-image-box bg-green-circle">
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-smartphones.jpg"
+                alt="AirPods Max"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">MOBILE-ACCESSORIES</span>
+              <h4>
+                <a href="product-details.html?item=airpods" class="product-link"
+                  >Apple AirPods Max Silver</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.36</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$536.79</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Apple AirPods Max')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-item-name="iphone"
+            data-product-key="iphone"
+          >
+            <div class="card-image-box bg-pink-box">
+              <span class="discount-badge yellow-badge">-6%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-smartphones.jpg"
+                alt="iPhone 6"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">SMARTPHONES</span>
+              <h4>
+                <a href="product-details.html?item=iphone" class="product-link"
+                  >iPhone 6</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.55</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$283.10</span>
+                  <span class="card-old-price">$299.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('iPhone 6')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status out-of-stock">• Out of stock</span>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-item-name="rolex"
+            data-product-key="rolex"
+          >
+            <div class="card-image-box bg-blue-box">
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-mens-watches.jpg"
+                alt="Rolex Watch"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">MENS-WATCHES</span>
+              <h4>
+                <a href="product-details.html?item=rolex" class="product-link"
+                  >Rolex Submariner Watch</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.15</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$13,885.19</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Rolex Submariner Watch')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-item-name="macbook"
+            data-product-key="macbook"
+          >
+            <div class="card-image-box bg-blue-box">
+              <span class="discount-badge orange-badge">-11%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-laptops.jpg"
+                alt="MacBook"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">LAPTOPS</span>
+              <h4>
+                <a href="product-details.html?item=macbook" class="product-link"
+                  >Apple MacBook Pro 14 Inch Space Grey</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.51</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$1,785.59</span>
+                  <span class="card-old-price">$1,999.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Apple MacBook Pro')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-item-name="helmet"
+            data-product-key="helmet"
+          >
+            <div class="card-image-box bg-purple-box">
+              <span class="discount-badge orange-badge">-11%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-sports.jpg"
+                alt="Cricket Helmet"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">SPORTS-ACCESSORIES</span>
+              <h4>
+                <a href="product-details.html?item=helmet" class="product-link"
+                  >Cricket Helmet</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.19</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$39.83</span>
+                  <span class="card-old-price">$44.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Cricket Helmet')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-item-name="mascara"
+            data-product-key="mascara"
+          >
+            <div class="card-image-box bg-pink-box">
+              <span class="discount-badge yellow-badge">-7%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-beauty.jpg"
+                alt="Mascara"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">BEAUTY</span>
+              <h4>
+                <a href="product-details.html?item=mascara" class="product-link"
+                  >Essence Mascara Lash Princess</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.94</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$9.27</span>
+                  <span class="card-old-price">$9.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Essence Mascara')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status low-stock">• Low stock - 5 left</span>
+            </div>
+          </div>
+          <div class="product-card" data-item-name="bag" data-product-key="bag">
+            <div class="card-image-box bg-pink-box">
+              <span class="discount-badge orange-badge">-12%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-womens-bags.jpg"
+                alt="Marc Jacobs Shoulder Bag"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">WOMENS-BAGS</span>
+              <h4>
+                <a href="product-details.html?item=bag" class="product-link"
+                  >Marc Jacobs Shoulder Bag</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.31</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$166.43</span>
+                  <span class="card-old-price">$189.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Marc Jacobs Shoulder Bag')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-item-name="charger"
+            data-product-key="charger"
+          >
+            <div class="card-image-box bg-blue-box">
+              <span class="discount-badge orange-badge">-13%</span>
+              <button class="wishlist-btn">♡</button>
+              <img
+                src="./Kova-UI-Kit/02-assets/product-placeholders/ph-vehicle.jpg"
+                alt="Charger SXT RWD"
+              />
+            </div>
+            <div class="card-info">
+              <span class="prod-cat">VEHICLE</span>
+              <h4>
+                <a href="product-details.html?item=charger" class="product-link"
+                  >Charger SXT RWD</a
+                >
+              </h4>
+              <p class="stars-row">
+                ★★★★★ <span class="num-rating">4.16</span>
+              </p>
+              <div class="price-and-action">
+                <div class="price-stack">
+                  <span class="card-price">$28,581.29</span>
+                  <span class="card-old-price">$32,999.99</span>
+                </div>
+                <button
+                  class="add-cart-circle"
+                  onclick="addItemToCart('Charger SXT RWD')"
+                >
+                  +
+                </button>
+              </div>
+              <span class="stock-status in-stock">• In stock</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shop-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img
+            src="./Kova-UI-Kit/02-assets/logo/kova-lockup.svg"
+            alt="KOVA Logo"
+            class="footer-logo"
+          />
+          <p>
+            194 products across 24 categories. Every price, rating and stock
+            level comes straight from the API.
+          </p>
+          <span class="footer-copyright">Kova — e-commerce storefront</span>
+        </div>
+        <div class="footer-links-group">
+          <h5>Shop</h5>
+          <a href="shop.html">All products</a>
+          <a href="category.html">Categories</a>
+          <a href="#">Deals</a>
+          <a href="#">New in</a>
+        </div>
+        <div class="footer-links-group">
+          <h5>Account</h5>
+          <a href="#">Sign in</a>
+          <a href="#">My cart</a>
+          <a href="#">Order history</a>
+          <a href="#">Wishlist</a>
+        </div>
+        <div class="footer-links-group">
+          <h5>Help</h5>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Warranty</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="api-client.js"></script> -->
+    <script src="search-results.js"></script>
+  </body>
+</html>
